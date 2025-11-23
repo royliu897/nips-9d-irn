@@ -15,18 +15,18 @@ from siren_model import SurrogateModel
 class SpectrumDataset(Dataset):
     def __init__(self, data_path, param_keys, num_q, num_w):
         print(f"Loading dataset from {data_path}...")
-        # Load data to RAM (CPU)
+        # Load data to RAM (CPU), later send small batches to VRAM (GPU)
         data = torch.load(data_path, map_location='cpu')
         
-        self.params_tensor = data['params_tensor'] # (Ns, 9)
-        self.q = data['q']                         # (Ns, Nq, 3)
-        self.w = data['w']                         # (Nw,)
-        self.sqw = data['sqw']                     # (Ns, Nq, Nw)
+        self.params_tensor = data['params_tensor'] # (Ns, 9) hamiltonian parameters
+        self.q = data['q']                         # (Ns, Nq, 3) 3d coordinates
+        self.w = data['w']                         # (Nw,) energy
+        self.sqw = data['sqw']                     # (Ns, Nq, Nw) scattering intensity values
         
         self.param_keys = param_keys
         self.normalizer = CONFIG['input_normalizer']
         
-        # Pre-calculate normalization bounds (keep on CPU for __getitem__)
+        # Pre-calculate normalization bounds for hamiltonian parameters (keep on CPU for __getitem__)
         self.p_mins = torch.tensor([self.normalizer[k]['min'] for k in param_keys]).float()
         self.p_maxs = torch.tensor([self.normalizer[k]['max'] for k in param_keys]).float()
         
@@ -48,8 +48,8 @@ class SpectrumDataset(Dataset):
 
     def __getitem__(self, idx):
         """
-        Returns COMPACT tensors.
-        We do NOT expand the meshgrid here. We save PCIe bandwidth by expanding on GPU.
+        Returns compact tensors.
+        Do NOT expand the meshgrid here. Save PCIe bandwidth by expanding on GPU.
         """
         # 1. Normalize Params (9,)
         p_raw = self.params_tensor[idx]
@@ -59,7 +59,7 @@ class SpectrumDataset(Dataset):
         q_raw = self.q[idx] 
         q_norm = self.normalize(q_raw, self.q_mins, self.q_maxs)
         
-        # 3. Normalize W (Nw,) - Note: w is global, but usually fast to just grab
+        # 3. Normalize W (Nw,) - w is global, but usually fast to just grab
         w_raw = self.w
         w_norm = self.normalize(w_raw, self.w_min, self.w_max)
         
