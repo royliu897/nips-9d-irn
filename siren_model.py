@@ -6,7 +6,9 @@ import torch.nn.functional as F
 class ModulatedSineLayer(nn.Module):
     """
     A Sine layer that accepts frequency (gamma) and phase (beta) modulations.
-    Formula: sin(omega_0 * (gamma * (Wx + b) + beta))
+    Modulations are based on hamiltonian parameteres, so we have
+    f(x|h) = sin(omega_0 * (gamma * (Wx + b) + beta)), where x is our
+    momentum-energy coordinates and h is our hamiltonian paramters.
     """
     def __init__(self, in_features, out_features, omega_0=30, is_first=False):
         super().__init__()
@@ -27,13 +29,14 @@ class ModulatedSineLayer(nn.Module):
                 self.linear.bias.zero_()
 
     def forward(self, x, gamma, beta):
-        # x: (Batch, Points, In_Dim)
-        # gamma, beta: (Batch, 1, Out_Dim) - Broadcasted over points
+        # x: coordinates
+        # gamma: scale
+        # beta: shift
         
         out = self.linear(x)
         
         # Apply FiLM modulation
-        # gamma scales the activation, beta shifts it
+        # allows Hamiltonian parameters to stretch/move the sin function
         out = gamma * out + beta
         
         return torch.sin(self.omega_0 * out)
@@ -42,7 +45,8 @@ class ModulatedSineLayer(nn.Module):
 class MappingNetwork(nn.Module):
     """
     Maps 9D Hamiltonian parameters to the modulation space of the SIREN.
-    Uses a standard ReLU MLP.
+    Maps Ax,Ay... to gamma, beta
+    Uses a standard ReLU MLP, not siren layers, for efficiency.
     """
     def __init__(self, in_features, hidden_features, num_layers, out_features):
         super().__init__()
@@ -122,13 +126,11 @@ class ModulatedSiren(nn.Module):
         
         # 2. Run Synthesis Network
         x = coords
-        
         for layer, layer_mods in zip(self.layers, mods_split):
             # Split scale (gamma) and shift (beta)
             gamma, beta = torch.chunk(layer_mods, 2, dim=-1)
             
-            # Gamma usually starts near 0 in neural nets, but for modulation multiplication,
-            # we want it to start near 1.0 so gradients flow.
+            # If gamma is 0 then Gamma*x=0, so Gamma starts at 1.0
             gamma = gamma + 1.0 
             
             x = layer(x, gamma, beta)
