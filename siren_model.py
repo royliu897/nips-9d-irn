@@ -6,7 +6,7 @@ import torch.nn.functional as F
 class ModulatedSineLayer(nn.Module):
     """
     A Sine layer that accepts frequency (gamma) and phase (beta) modulations.
-    Modulations are based on hamiltonian parameteres, so we have
+    Modulations are based on Hamiltonian parameteres, so we have
     f(x|h) = sin(omega_0 * (gamma * (Wx + b) + beta)), where x is our
     momentum-energy coordinates and h is our hamiltonian paramters.
     """
