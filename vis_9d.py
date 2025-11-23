@@ -151,7 +151,7 @@ def run_dense_comparison(model, device):
     ax[0].set_xlabel("Path Index")
     plt.colorbar(im1, ax=ax[0])
     
-    # Prediction
+    # Prediction (can change cmap to 'viridis' if preferred)
     im2 = ax[1].imshow(pred_img, origin='lower', aspect='auto', cmap='inferno', extent=extent, vmin=0, vmax=np.max(gt_data))
     ax[1].set_title("SIREN Prediction")
     ax[1].set_xlabel("Path Index")
