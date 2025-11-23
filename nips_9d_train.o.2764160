@@ -1,0 +1,229 @@
+Job started at: Sat Nov 22 17:17:14 CST 2025
+Node: v330-001.ls6.tacc.utexas.edu
+Starting Training...
+Loading dataset from /scratch/11167/royrliu/simulation_data/surrogate_training/nips_9d_data_gen_curated.pt...
+Model Parameters: 1,056,769
+Epoch 1 | Train: 0.265048 | Val: 0.176928
+  -> New Best Model (Loss: 0.176928)
+Epoch 2 | Train: 0.171736 | Val: 0.146012
+  -> New Best Model (Loss: 0.146012)
+Epoch 3 | Train: 0.145398 | Val: 0.118292
+  -> New Best Model (Loss: 0.118292)
+Epoch 4 | Train: 0.129339 | Val: 0.126687
+  -> No improvement. Patience: 1/20
+Epoch 5 | Train: 0.117753 | Val: 0.105958
+  -> New Best Model (Loss: 0.105958)
+Epoch 6 | Train: 0.109168 | Val: 0.095307
+  -> New Best Model (Loss: 0.095307)
+Epoch 7 | Train: 0.102026 | Val: 0.112500
+  -> No improvement. Patience: 1/20
+Epoch 8 | Train: 0.094166 | Val: 0.071606
+  -> New Best Model (Loss: 0.071606)
+Epoch 9 | Train: 0.088163 | Val: 0.071547
+  -> New Best Model (Loss: 0.071547)
+Epoch 10 | Train: 0.083703 | Val: 0.076529
+  -> No improvement. Patience: 1/20
+Epoch 11 | Train: 0.079923 | Val: 0.086283
+  -> No improvement. Patience: 2/20
+Epoch 12 | Train: 0.076426 | Val: 0.100419
+  -> No improvement. Patience: 3/20
+Epoch 13 | Train: 0.071243 | Val: 0.071444
+  -> New Best Model (Loss: 0.071444)
+Epoch 14 | Train: 0.070233 | Val: 0.084820
+  -> No improvement. Patience: 1/20
+Epoch 15 | Train: 0.065862 | Val: 0.057620
+  -> New Best Model (Loss: 0.057620)
+Epoch 16 | Train: 0.063438 | Val: 0.106383
+  -> No improvement. Patience: 1/20
+Epoch 17 | Train: 0.063398 | Val: 0.067889
+  -> No improvement. Patience: 2/20
+Epoch 18 | Train: 0.060435 | Val: 0.075848
+  -> No improvement. Patience: 3/20
+Epoch 19 | Train: 0.057535 | Val: 0.058714
+  -> No improvement. Patience: 4/20
+Epoch 20 | Train: 0.054147 | Val: 0.049564
+  -> New Best Model (Loss: 0.049564)
+Epoch 21 | Train: 0.054894 | Val: 0.058118
+  -> No improvement. Patience: 1/20
+Epoch 22 | Train: 0.051723 | Val: 0.050724
+  -> No improvement. Patience: 2/20
+Epoch 23 | Train: 0.051890 | Val: 0.060240
+  -> No improvement. Patience: 3/20
+Epoch 24 | Train: 0.051396 | Val: 0.048584
+  -> New Best Model (Loss: 0.048584)
+Epoch 25 | Train: 0.049334 | Val: 0.042226
+  -> New Best Model (Loss: 0.042226)
+Epoch 26 | Train: 0.046976 | Val: 0.056107
+  -> No improvement. Patience: 1/20
+Epoch 27 | Train: 0.046633 | Val: 0.054949
+  -> No improvement. Patience: 2/20
+Epoch 28 | Train: 0.044937 | Val: 0.063674
+  -> No improvement. Patience: 3/20
+Epoch 29 | Train: 0.043819 | Val: 0.054178
+  -> No improvement. Patience: 4/20
+Epoch 30 | Train: 0.044076 | Val: 0.043604
+  -> No improvement. Patience: 5/20
+Epoch 31 | Train: 0.043167 | Val: 0.053081
+  -> No improvement. Patience: 6/20
+Epoch 32 | Train: 0.041530 | Val: 0.059900
+  -> No improvement. Patience: 7/20
+Epoch 33 | Train: 0.042622 | Val: 0.044272
+  -> No improvement. Patience: 8/20
+Epoch 34 | Train: 0.040192 | Val: 0.045590
+  -> No improvement. Patience: 9/20
+Epoch 35 | Train: 0.038089 | Val: 0.049456
+  -> No improvement. Patience: 10/20
+Epoch 36 | Train: 0.037872 | Val: 0.058222
+  -> No improvement. Patience: 11/20
+Epoch 37 | Train: 0.037734 | Val: 0.071170
+  -> No improvement. Patience: 12/20
+Epoch 38 | Train: 0.037004 | Val: 0.035391
+  -> New Best Model (Loss: 0.035391)
+Epoch 39 | Train: 0.035286 | Val: 0.050065
+  -> No improvement. Patience: 1/20
+Epoch 40 | Train: 0.036233 | Val: 0.047644
+  -> No improvement. Patience: 2/20
+Epoch 41 | Train: 0.035066 | Val: 0.030182
+  -> New Best Model (Loss: 0.030182)
+Epoch 42 | Train: 0.033875 | Val: 0.036339
+  -> No improvement. Patience: 1/20
+Epoch 43 | Train: 0.033408 | Val: 0.032788
+  -> No improvement. Patience: 2/20
+Epoch 44 | Train: 0.033098 | Val: 0.030008
+  -> New Best Model (Loss: 0.030008)
+Epoch 45 | Train: 0.032930 | Val: 0.035624
+  -> No improvement. Patience: 1/20
+Epoch 46 | Train: 0.033230 | Val: 0.033867
+  -> No improvement. Patience: 2/20
+Epoch 47 | Train: 0.032213 | Val: 0.036181
+  -> No improvement. Patience: 3/20
+Epoch 48 | Train: 0.031371 | Val: 0.047969
+  -> No improvement. Patience: 4/20
+Epoch 49 | Train: 0.031998 | Val: 0.035392
+  -> No improvement. Patience: 5/20
+Epoch 50 | Train: 0.029198 | Val: 0.043011
+  -> No improvement. Patience: 6/20
+Epoch 51 | Train: 0.030994 | Val: 0.034216
+  -> No improvement. Patience: 7/20
+Epoch 52 | Train: 0.029543 | Val: 0.031674
+  -> No improvement. Patience: 8/20
+Epoch 53 | Train: 0.030410 | Val: 0.045016
+  -> No improvement. Patience: 9/20
+Epoch 54 | Train: 0.029922 | Val: 0.036042
+  -> No improvement. Patience: 10/20
+Epoch 55 | Train: 0.029297 | Val: 0.030073
+  -> No improvement. Patience: 11/20
+Epoch 56 | Train: 0.027752 | Val: 0.027708
+  -> New Best Model (Loss: 0.027708)
+Epoch 57 | Train: 0.027729 | Val: 0.037668
+  -> No improvement. Patience: 1/20
+Epoch 58 | Train: 0.026248 | Val: 0.029506
+  -> No improvement. Patience: 2/20
+Epoch 59 | Train: 0.025846 | Val: 0.024226
+  -> New Best Model (Loss: 0.024226)
+Epoch 60 | Train: 0.027228 | Val: 0.032339
+  -> No improvement. Patience: 1/20
+Epoch 61 | Train: 0.027003 | Val: 0.027521
+  -> No improvement. Patience: 2/20
+Epoch 62 | Train: 0.027339 | Val: 0.032382
+  -> No improvement. Patience: 3/20
+Epoch 63 | Train: 0.025410 | Val: 0.023535
+  -> New Best Model (Loss: 0.023535)
+Epoch 64 | Train: 0.027244 | Val: 0.028172
+  -> No improvement. Patience: 1/20
+Epoch 65 | Train: 0.024762 | Val: 0.030143
+  -> No improvement. Patience: 2/20
+Epoch 66 | Train: 0.025088 | Val: 0.024961
+  -> No improvement. Patience: 3/20
+Epoch 67 | Train: 0.024203 | Val: 0.026618
+  -> No improvement. Patience: 4/20
+Epoch 68 | Train: 0.024600 | Val: 0.045334
+  -> No improvement. Patience: 5/20
+Epoch 69 | Train: 0.023910 | Val: 0.028794
+  -> No improvement. Patience: 6/20
+Epoch 70 | Train: 0.024591 | Val: 0.027847
+  -> No improvement. Patience: 7/20
+Epoch 71 | Train: 0.023747 | Val: 0.037646
+  -> No improvement. Patience: 8/20
+Epoch 72 | Train: 0.022761 | Val: 0.030293
+  -> No improvement. Patience: 9/20
+Epoch 73 | Train: 0.023910 | Val: 0.022928
+  -> New Best Model (Loss: 0.022928)
+Epoch 74 | Train: 0.022341 | Val: 0.028175
+  -> No improvement. Patience: 1/20
+Epoch 75 | Train: 0.024223 | Val: 0.026530
+  -> No improvement. Patience: 2/20
+Epoch 76 | Train: 0.022676 | Val: 0.027268
+  -> No improvement. Patience: 3/20
+Epoch 77 | Train: 0.023959 | Val: 0.025801
+  -> No improvement. Patience: 4/20
+Epoch 78 | Train: 0.024084 | Val: 0.026431
+  -> No improvement. Patience: 5/20
+Epoch 79 | Train: 0.023504 | Val: 0.028220
+  -> No improvement. Patience: 6/20
+Epoch 80 | Train: 0.022730 | Val: 0.027742
+  -> No improvement. Patience: 7/20
+Epoch 81 | Train: 0.021852 | Val: 0.019784
+  -> New Best Model (Loss: 0.019784)
+Epoch 82 | Train: 0.022490 | Val: 0.028488
+  -> No improvement. Patience: 1/20
+Epoch 83 | Train: 0.021708 | Val: 0.022239
+  -> No improvement. Patience: 2/20
+Epoch 84 | Train: 0.021239 | Val: 0.025897
+  -> No improvement. Patience: 3/20
+Epoch 85 | Train: 0.021102 | Val: 0.033125
+  -> No improvement. Patience: 4/20
+Epoch 86 | Train: 0.021666 | Val: 0.023887
+  -> No improvement. Patience: 5/20
+Epoch 87 | Train: 0.021074 | Val: 0.024737
+  -> No improvement. Patience: 6/20
+Epoch 88 | Train: 0.021126 | Val: 0.019650
+  -> New Best Model (Loss: 0.019650)
+Epoch 89 | Train: 0.021220 | Val: 0.033081
+  -> No improvement. Patience: 1/20
+Epoch 90 | Train: 0.020755 | Val: 0.025183
+  -> No improvement. Patience: 2/20
+Epoch 91 | Train: 0.020311 | Val: 0.026565
+  -> No improvement. Patience: 3/20
+Epoch 92 | Train: 0.020883 | Val: 0.031587
+  -> No improvement. Patience: 4/20
+Epoch 93 | Train: 0.020351 | Val: 0.022509
+  -> No improvement. Patience: 5/20
+Epoch 94 | Train: 0.020605 | Val: 0.031777
+  -> No improvement. Patience: 6/20
+Epoch 95 | Train: 0.020016 | Val: 0.028081
+  -> No improvement. Patience: 7/20
+Epoch 96 | Train: 0.019691 | Val: 0.021764
+  -> No improvement. Patience: 8/20
+Epoch 97 | Train: 0.020105 | Val: 0.023471
+  -> No improvement. Patience: 9/20
+Epoch 98 | Train: 0.019462 | Val: 0.028464
+  -> No improvement. Patience: 10/20
+Epoch 99 | Train: 0.020267 | Val: 0.028732
+  -> No improvement. Patience: 11/20
+Epoch 100 | Train: 0.019128 | Val: 0.020891
+  -> No improvement. Patience: 12/20
+Epoch 101 | Train: 0.019217 | Val: 0.032295
+  -> No improvement. Patience: 13/20
+Epoch 102 | Train: 0.019946 | Val: 0.020989
+  -> No improvement. Patience: 14/20
+Epoch 103 | Train: 0.019543 | Val: 0.021694
+  -> No improvement. Patience: 15/20
+Epoch 104 | Train: 0.018650 | Val: 0.028379
+  -> No improvement. Patience: 16/20
+Epoch 105 | Train: 0.019387 | Val: 0.026482
+  -> No improvement. Patience: 17/20
+Epoch 106 | Train: 0.018709 | Val: 0.022519
+  -> No improvement. Patience: 18/20
+Epoch 107 | Train: 0.019044 | Val: 0.021330
+  -> No improvement. Patience: 19/20
+Epoch 108 | Train: 0.018626 | Val: 0.025206
+  -> No improvement. Patience: 20/20
+
+!!! Early Stopping Triggered !!!
+Validation loss has not improved for 20 epochs.
+[1;34mwandb[0m: 
+[1;34mwandb[0m: You can sync this run to the cloud by running:
+[1;34mwandb[0m: [1mwandb sync /work/11167/royrliu/ls6/irn/wandb/offline-run-20251122_171830-qay4fb1i[0m
+[1;34mwandb[0m: Find logs at: [1;35mwandb/offline-run-20251122_171830-qay4fb1i/logs[0m
+Job finished at: Sun Nov 23 06:23:43 CST 2025

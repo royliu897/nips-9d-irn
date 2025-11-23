@@ -1,0 +1,8 @@
+venv_siren/
+wandb/
+__pycache__/
+*.h5
+*.pt
+*.out
+*.err
+.DS_Store
