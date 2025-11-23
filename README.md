@@ -11,4 +11,4 @@ Workflow:
 4) dense_slice.jl - generates dense data for ground truth image
 5) vis_9d.py - generates plot and png comparing ground truth to predicted
 
-WandB: https://wandb.ai/royliu2007-university-of-texas-at-austin/nips-9d-siren-film/overview/details
+WandB: https://wandb.ai/royliu2007-university-of-texas-at-austin/nips-9d-siren-film?nw=nwuserroyliu2007
