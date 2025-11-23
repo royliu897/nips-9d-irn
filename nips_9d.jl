@@ -2,29 +2,26 @@ using DrWatson
 @quickactivate
 
 using Distributed, Sunny, WGLMakie, LatinHypercubeSampling
-# Adjust workers to your machine's core count
-addprocs(16)
 
+addprocs(16) # Use 16 worker processes
+
+# Using these packages across all 16 workers
 @everywhere using DrWatson
 @everywhere @quickactivate
 @everywhere using Sunny, LinearAlgebra, HDF5, LatinHypercubeSampling
 
-@everywhere function nips_crystal()
+# Define the material's unit cell
+@everywhere function nips_crystal() 
     latvecs = lattice_vectors(5.8196, 10.084, 6.8959, 90, 106.221, 90)
     positions = [[0, 1/3, 0]]
     Crystal(latvecs, positions, 12)
 end
 
-# ------------------------------------------------------
-# PARAMETER SAMPLING STRATEGY: LATIN HYPERCUBE
-# ------------------------------------------------------
-# We pre-calculate the plan on the main process to ensure 
-# optimal distribution, then distribute the specific params to workers.
-
+# Generate Latin Hypercube sampling plan
 function generate_lhs_plan(n_samples)
+    
     # Define ranges for the 9 parameters
     # Format: (Min, Max)
-    
     ranges = [
         (-0.02, 0.0),   # Ax   (Base -0.01)
         (0.0, 0.42),    # Az   (Base 0.21)
@@ -37,19 +34,18 @@ function generate_lhs_plan(n_samples)
         (-0.76, 0.0)    # J4   (Base -0.38)
     ]
     
-    # Generate normalized LHS plan [0,1]
     println("Generating Latin Hypercube Plan for $n_samples samples...")
     
-    # Use randomLHC (returns just the matrix)
+    # Generate (n_samples x 9) matrix of numbers from evenly spaced bins, each column is a Hamiltonian parameter 
     plan = LatinHypercubeSampling.randomLHC(n_samples, 9)
     
-    # Scale plan to actual physical ranges
-    # DOCUMENTATION FIX: Function is named `scaleLHC` and accepts the array of tuples directly
+    # Scale plan to actual physical ranges for each Hamiltonian parameter
     scaled_plan = LatinHypercubeSampling.scaleLHC(plan, ranges)
     
     return scaled_plan
 end
 
+# Physics, defines Hamiltonian
 @everywhere function nips_system(; Ax, Az, J1a, J1b, J2a, J2b, J3a, J3b, J4)
     crystal = nips_crystal()
     sys = System(crystal, [1 => Moment(; s=1, g=2)], :dipole_uncorrected)
@@ -70,6 +66,7 @@ end
     return sys
 end
 
+# Simulation loop for one sample
 @everywhere function compute_one_sample(row_data)
     # Unpack row_data (index, params_vector)
     idx, p_vec = row_data
@@ -96,7 +93,7 @@ end
     measure = ssf_perp(sys; formfactors=[1=>FormFactor("Ni2")])
     swt = SpinWaveTheory(sys; measure=measure, regularization=1e-6)
 
-    qs_rlu = [rand(3) .- 0.5 for _ in 1:n_q_points] 
+    qs_rlu = [rand(3) .- 0.5 for _ in 1:n_q_points] #Pick random points in Brillouin Zone
     
     try
         res = domain_average(sys.crystal, qs_rlu; 
@@ -131,8 +128,10 @@ samples = filter(!isnothing, results)
 println("Success rate: $(length(samples)) / $nsamples")
 
 # ------------------------------------------------------
-# WRITE HDF5
+# FILE SAVING
 # ------------------------------------------------------
+
+#Write HDF5 file to Scratch for faster I/O
 output_dir = joinpath(ENV["SCRATCH"], "nips_prelim")
 mkpath(output_dir)
 output_file = joinpath(output_dir, "nips_9d_data_gen.h5")
@@ -153,3 +152,6 @@ h5open(output_file, "w") do f
     end
 end
 println("Done!")
+
+# Generates nsamples x n_q_points * energies data points:
+# 20,000 * 2,500 * 150 = 7.5 billion data points, ~30gb
